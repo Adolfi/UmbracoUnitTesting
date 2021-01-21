@@ -3,7 +3,7 @@ All example tests from the official Umbraco Documentation section on Unit Testin
 
 ## Tests included:
 Some tests have been renamed or improved compared to the official documentation, mostly to be able to reuse models and controllers and reudece the size of each project. 
-Every class in this solution has a summary with a link to the official documentation, so any renaming should not be a problem.
+Every class in this solution has a summary with a link to the official documentation so any renaming should not be a problem.
 
 - [Mocking Umbraco](UmbracoUnitTesting.Tests/Shared/UmbracoBaseTest.cs)
 - [Testing ContentModel](UmbracoUnitTesting.Tests/ContentModel/ContentModelTests.cs)
