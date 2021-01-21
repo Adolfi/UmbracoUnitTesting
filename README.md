@@ -15,5 +15,5 @@ This is intentional, all necessary assemblies to run each test are installed suc
 - UmbracoCms.Core
 - UmbracoCms.Web
 
-## How to use this project:
+### How to use this project:
 This is not a template or a base project. Use it as a reference and a source for inspiration to your own projects.
