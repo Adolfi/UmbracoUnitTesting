@@ -2,7 +2,7 @@
 All example tests from the official Umbraco Documentation section on Unit Testing: https://our.umbraco.com/documentation/Implementation/Unit-Testing/
 
 ## Tests included:
-- [Mocking Umbraco](UmbracoUnitTesting.Tests/Shared/UmbracoBaseTest.cs)
+- [Mocking Umbraco](UmbracoUnitTesting.Tests/Shared/UmbracoBaseTest.cs): [Documentation](http://)
 - [Testing ContentModel](UmbracoUnitTesting.Tests/ContentModel/ContentModelTests.cs)
 - [Testing RenderMvcController](UmbracoUnitTesting.Tests/RenderMvcController/RenderMvcControllerTests.cs)
 - [Testing SurfaceController](UmbracoUnitTesting.Tests/SurfaceController/SurfaceControllerTests.cs)
