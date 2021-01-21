@@ -1,1 +1,17 @@
 .vs/
+*.obj
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+[Bb]in
+[Db]ebug*/
+obj/
+[Bb]in/[Rr]elease*/
+_ReSharper*/
+*.[Pp]ublish.xml
+*.suo
+[sS]ource
+[sS]andbox
+/packages/*
