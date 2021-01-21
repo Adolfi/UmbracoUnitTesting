@@ -1,8 +1,6 @@
 # Umbraco Unit Testing
 All example tests from the official Umbraco Documentation section on Unit Testing: https://our.umbraco.com/documentation/Implementation/Unit-Testing/
 
-These examples are for Umbraco 8+ and they rely on [NUnit](https://nunit.org/) and [Moq](https://github.com/moq/moq4).
-
 ## Tests included:
 - [Mocking Umbraco](UmbracoUnitTesting.Tests/Shared/UmbracoBaseTest.cs)
 - [Testing ContentModel](UmbracoUnitTesting.Tests/ContentModel/ContentModelTests.cs)
@@ -14,7 +12,7 @@ These examples are for Umbraco 8+ and they rely on [NUnit](https://nunit.org/) a
 - [Testing GetCurrentMember using the MembershipHelper](UmbracoUnitTesting.Tests/MembershipHelper/MembershipHelperTests.cs)
 
 ## How to use this project:
-This solution contains two projects: A Core project and a Tests project. You'll notice that this solution does not contain any Umbraco website.
+This solution contains two projects: A **.Core** project and a **.Tests** project. You'll notice that this solution does not contain any Umbraco website.
 This is intentional. Do not use this solution as a template or a base project. Use it as a reference and a source for inspiration to your own projects.
 All necessary assemblies to run each test have been installed such as:
 
