@@ -3,7 +3,12 @@ All example tests from the official Umbraco Documentation section on Unit Testin
 
 ## Tests included:
 - [Testing a ContentModel](UmbracoUnitTesting.Tests/ContentModel/ContentModelTests.cs)
-
+- [Testing a RenderMvcController](UmbracoUnitTesting.Tests/RenderMvcController/RenderMvcControllerTests.cs)
+- [Testing a SurfaceController](UmbracoUnitTesting.Tests/SurfaceController/SurfaceControllerTests.cs)
+- [Testing an UmbracoApiController](UmbracoUnitTesting.Tests/UmbracoApiController/UmbracoApiControllerTests.cs)
+- [Testing ICultureDictionary using the UmbracoHelper](UmbracoUnitTesting.Tests/UmbracoHelper/CultureDictionaryTests.cs)
+- [Testing IPublishedContentQuery using the UmbracoHelper](UmbracoUnitTesting.Tests/UmbracoHelper/PublishedContentQueryTests.cs)
+- [Testing GetCurrentMember using the MembershipHelper](UmbracoUnitTesting.Tests/MembershipHelper/MembershipHelperTests.cs)
 
 ## How to use this project:
 This solution contains two projects: A Core project and a Tests project. You'll notice that this solution does not contain any Umbraco website.
