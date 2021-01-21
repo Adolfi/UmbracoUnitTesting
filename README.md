@@ -28,3 +28,6 @@ All necessary assemblies to run each test have been installed such as:
 **UmbracoUnitTesting.Core**
 - UmbracoCms.Core
 - UmbracoCms.Web
+
+## Read more
+Go to [adolfi.dev](https://adolfi.dev) if you want to read more Umbraco and/or Unit Testing articles.
