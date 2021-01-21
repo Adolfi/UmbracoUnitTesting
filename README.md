@@ -11,7 +11,7 @@ All example tests from the official Umbraco Documentation section on Unit Testin
 - [Testing IPublishedContentQuery using the UmbracoHelper](UmbracoUnitTesting.Tests/UmbracoHelper/PublishedContentQueryTests.cs)
 - [Testing GetCurrentMember using the MembershipHelper](UmbracoUnitTesting.Tests/MembershipHelper/MembershipHelperTests.cs)
 
-Note that some tests may have been renamed from the official documentation to reuse some models and controllers and thereby reudece the size of this project.
+Note that some tests may have been renamed from the official documentation to reuse some models and controllers and thereby reudece the size of this project. Every class in this solution has a summary with a link to the official documentation, so any renaming should not be a problem.
 
 ## How to use this project:
 This solution contains two projects: A **.Core** project and a **.Tests** project. You'll notice that this solution does not contain any Umbraco website.
