@@ -1,7 +1,7 @@
 # Umbraco Unit Testing
 All example tests from the official Umbraco Documentation section on Unit Testing: https://our.umbraco.com/documentation/Implementation/Unit-Testing/
 
-## Solution
+## Projects:
 This solution contains two projects: A Core project and a Tests project. You'll notice that this solution does not contain any Umbraco website.
 This is intentional, all necessary assemblies to run each test are installed such as:
 
