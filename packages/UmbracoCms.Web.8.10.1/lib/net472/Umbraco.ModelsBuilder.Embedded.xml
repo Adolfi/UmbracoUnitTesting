@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Umbraco.ModelsBuilder.Embedded</name>
+    </assembly>
+    <members>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.ApiVersion">
+            <summary>
+            Manages API version handshake between client and server.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.ApiVersion.#ctor(Semver.SemVersion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.ModelsBuilder.Embedded.ApiVersion"/> class.
+            </summary>
+            <param name="executingVersion">The currently executing version.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.ApiVersion.Current">
+            <summary>
+            Gets the currently executing API version.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.ApiVersion.Version">
+            <summary>
+            Gets the executing version of the API.
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator">
+            <summary>
+            Used to validate the aliases for the content type when MB is enabled to ensure that
+            no illegal aliases are used
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator">
+            <summary>
+            Used to validate the aliases for the content type when MB is enabled to ensure that
+            no illegal aliases are used
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController">
+            <summary>
+            API controller for use in the Umbraco back office with Angular resources
+            </summary>
+            <remarks>
+            We've created a different controller for the backoffice/angular specifically this is to ensure that the
+            correct CSRF security is adhered to for angular and it also ensures that this controller is not subseptipal to
+            global WebApi formatters being changed since this is always forced to only return Angular JSON Specific formats.
+            </remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator">
+            <summary>
+            Used to validate the aliases for the content type when MB is enabled to ensure that
+            no illegal aliases are used
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Building.Builder">
+            <summary>
+            Provides a base class for all builders.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Building.Builder.ModelsNamespace">
+            <summary>
+            Gets or sets a value indicating the namespace to use for the models.
+            </summary>
+            <remarks>May be overriden by code attributes.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Building.Builder.Using">
+            <summary>
+            Gets the list of assemblies to add to the set of 'using' assemblies in each model file.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.Builder.GetModelsToGenerate">
+            <summary>
+            Gets the list of models to generate.
+            </summary>
+            <returns>The models to generate</returns>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Building.Builder.TypeModels">
+            <summary>
+            Gets the list of all models.
+            </summary>
+            <remarks>Includes those that are ignored.</remarks>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.Builder.#ctor(Umbraco.ModelsBuilder.Embedded.Configuration.IModelsBuilderConfig,System.Collections.Generic.IList{Umbraco.ModelsBuilder.Embedded.Building.TypeModel})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.ModelsBuilder.Embedded.Building.Builder"/> class with a list of models to generate,
+            the result of code parsing, and a models namespace.
+            </summary>
+            <param name="typeModels">The list of models to generate.</param>
+            <param name="modelsNamespace">The models namespace.</param>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.Builder.Prepare">
+            <summary>
+            Prepares generation by processing the result of code parsing.
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel">
+            <summary>
+            Represents a model property.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.Alias">
+            <summary>
+            Gets the alias of the property.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.Name">
+            <summary>
+            Gets the name of the property.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.Description">
+            <summary>
+            Gets the description of the property.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.ClrName">
+            <summary>
+            Gets the clr name of the property.
+            </summary>
+            <remarks>This is just the local name eg "Price".</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.ModelClrType">
+            <summary>
+            Gets the Model Clr type of the property values.
+            </summary>
+            <remarks>As indicated by the <c>PublishedPropertyType</c>, ie by the <c>IPropertyValueConverter</c>
+            if any, else <c>object</c>. May include some ModelType that will need to be mapped.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.ClrTypeName">
+            <summary>
+            Gets the CLR type name of the property values.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.Errors">
+            <summary>
+            Gets the generation errors for the property.
+            </summary>
+            <remarks>This should be null, unless something prevents the property from being
+            generated, and then the value should explain what. This can be used to generate
+            commented out code eg in PureLive.</remarks>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.PropertyModel.AddError(System.String)">
+            <summary>
+            Adds an error.
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder">
+            <summary>
+            Implements a builder that works by writing text.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder.#ctor(Umbraco.ModelsBuilder.Embedded.Configuration.IModelsBuilderConfig,System.Collections.Generic.IList{Umbraco.ModelsBuilder.Embedded.Building.TypeModel})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder"/> class with a list of models to generate
+            and the result of code parsing.
+            </summary>
+            <param name="typeModels">The list of models to generate.</param>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder.Generate(System.Text.StringBuilder,Umbraco.ModelsBuilder.Embedded.Building.TypeModel)">
+            <summary>
+            Outputs a generated model to a string builder.
+            </summary>
+            <param name="sb">The string builder.</param>
+            <param name="typeModel">The model to generate.</param>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder.Generate(System.Text.StringBuilder,System.Collections.Generic.IEnumerable{Umbraco.ModelsBuilder.Embedded.Building.TypeModel})">
+            <summary>
+            Outputs generated models to a string builder.
+            </summary>
+            <param name="sb">The string builder.</param>
+            <param name="typeModels">The models to generate.</param>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TextBuilder.WriteHeader(System.Text.StringBuilder)">
+            <summary>
+            Outputs an "auto-generated" header to a string builder.
+            </summary>
+            <param name="sb">The string builder.</param>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TextHeaderWriter.WriteHeader(System.Text.StringBuilder)">
+            <summary>
+            Outputs an "auto-generated" header to a string builder.
+            </summary>
+            <param name="sb">The string builder.</param>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Building.TypeModel">
+            <summary>
+            Represents a model.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.Id">
+            <summary>
+            Gets the unique identifier of the corresponding content type.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.Alias">
+            <summary>
+            Gets the alias of the model.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.Name">
+            <summary>
+            Gets the name of the content type.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.Description">
+            <summary>
+            Gets the description of the content type.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ClrName">
+            <summary>
+            Gets the clr name of the model.
+            </summary>
+            <remarks>This is the complete name eg "Foo.Bar.MyContent".</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ParentId">
+            <summary>
+            Gets the unique identifier of the parent.
+            </summary>
+            <remarks>The parent can either be a base content type, or a content types container. If the content
+            type does not have a base content type, then returns <c>-1</c>.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.BaseType">
+            <summary>
+            Gets the base model.
+            </summary>
+            <remarks>
+                <para>If the content type does not have a base content type, then returns <c>null</c>.</para>
+                <para>The current model inherits from its base model.</para>
+            </remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.Properties">
+            <summary>
+            Gets the list of properties that are defined by this model.
+            </summary>
+            <remarks>These are only those property that are defined locally by this model,
+            and the list does not contain properties inherited from base models or from mixins.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.MixinTypes">
+            <summary>
+            Gets the mixin models.
+            </summary>
+            <remarks>The current model implements mixins.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.DeclaringInterfaces">
+            <summary>
+            Gets the list of interfaces that this model needs to declare it implements.
+            </summary>
+            <remarks>Some of these interfaces may actually be implemented by a base model
+            that this model inherits from.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ImplementingInterfaces">
+            <summary>
+            Gets the list of interfaces that this model needs to actually implement.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.HasBase">
+            <summary>
+            Gets a value indicating whether this model has a base class.
+            </summary>
+            <remarks>Can be either because the content type has a base content type declared in Umbraco,
+            or because the existing user's code declares a base class for this model.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.IsMixin">
+            <summary>
+            Gets a value indicating whether this model is used as a mixin by another model.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.IsParent">
+            <summary>
+            Gets a value indicating whether this model is the base model of another model.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.IsElement">
+            <summary>
+            Gets a value indicating whether the type is an element.
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemTypes">
+            <summary>
+            Represents the different model item types.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemTypes.Element">
+            <summary>
+            Element.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemTypes.Content">
+            <summary>
+            Content.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemTypes.Media">
+            <summary>
+            Media.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemTypes.Member">
+            <summary>
+            Member.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.ItemType">
+            <summary>
+            Gets or sets the model item type.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.CollectImplems(System.Collections.Generic.ICollection{Umbraco.ModelsBuilder.Embedded.Building.TypeModel},Umbraco.ModelsBuilder.Embedded.Building.TypeModel)">
+            <summary>
+            Recursively collects all types inherited, or implemented as interfaces, by a specified type.
+            </summary>
+            <param name="types">The collection.</param>
+            <param name="type">The type.</param>
+            <remarks>Includes the specified type.</remarks>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.EnumerateBaseTypes(System.Boolean)">
+            <summary>
+            Enumerates the base models starting from the current model up.
+            </summary>
+            <param name="andSelf">Indicates whether the enumeration should start with the current model
+            or from its base model.</param>
+            <returns>The base models.</returns>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Building.TypeModel.MapModelTypes(System.Collections.Generic.IList{Umbraco.ModelsBuilder.Embedded.Building.TypeModel},System.String)">
+            <summary>
+            Maps ModelType.
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Compose.DisabledModelsBuilderComponent">
+            <summary>
+            Special component used for when MB is disabled with the legacy MB is detected
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComponent.FileService_SavingTemplate(Umbraco.Core.Services.IFileService,Umbraco.Core.Events.SaveEventArgs{Umbraco.Core.Models.ITemplate})">
+            <summary>
+            Used to check if a template is being created based on a document type, in this case we need to
+            ensure the template markup is correct based on the model name of the document type
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.ConfigsExtensions">
+            <summary>
+            Provides extension methods for the <see cref="T:Umbraco.Core.Configuration.Configs"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.ConfigsExtensions.ModelsBuilder(Umbraco.Core.Configuration.Configs)">
+            <summary>
+            Gets the models builder configuration.
+            </summary>
+            <remarks>Getting the models builder configuration freezes its state,
+            and any attempt at modifying the configuration using the Setup method
+            will be ignored.</remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig">
+            <summary>
+            Represents the models builder configuration.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig"/> class.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.#ctor(System.Boolean,Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode,System.String,System.Boolean,System.Boolean,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig"/> class.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.Enable">
+            <summary>
+            Gets a value indicating whether the whole models experience is enabled.
+            </summary>
+            <remarks>
+                <para>If this is false then absolutely nothing happens.</para>
+                <para>Default value is <c>false</c> which means that unless we have this setting, nothing happens.</para>
+            </remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.ModelsMode">
+            <summary>
+            Gets the models mode.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.IsDebug">
+            <summary>
+            Gets a value indicating whether system.web/compilation/@debug is true.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.ModelsNamespace">
+            <summary>
+            Gets the models namespace.
+            </summary>
+            <remarks>That value could be overriden by other (attribute in user's code...). Return default if no value was supplied.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.EnableFactory">
+            <summary>
+            Gets a value indicating whether we should enable the models factory.
+            </summary>
+            <remarks>Default value is <c>true</c> because no factory is enabled by default in Umbraco.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.FlagOutOfDateModels">
+            <summary>
+            Gets a value indicating whether we should flag out-of-date models.
+            </summary>
+            <remarks>Models become out-of-date when data types or content types are updated. When this
+            setting is activated the ~/App_Data/Models/ood.txt file is then created. When models are
+            generated through the dashboard, the files is cleared. Default value is <c>false</c>.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.ModelsDirectory">
+            <summary>
+            Gets the models directory.
+            </summary>
+            <remarks>Default is ~/App_Data/Models but that can be changed.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.AcceptUnsafeModelsDirectory">
+            <summary>
+            Gets a value indicating whether to accept an unsafe value for ModelsDirectory.
+            </summary>
+            <remarks>An unsafe value is an absolute path, or a relative path pointing outside
+            of the website root.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsBuilderConfig.DebugLevel">
+            <summary>
+            Gets a value indicating the debug log level.
+            </summary>
+            <remarks>0 means minimal (safe on live site), anything else means more and more details (maybe not safe).</remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode">
+            <summary>
+            Defines the models generation modes.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode.Nothing">
+            <summary>
+            Do not generate models.
+            </summary>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode.PureLive">
+            <summary>
+            Generate models in memory.
+            When: a content type change occurs.
+            </summary>
+            <remarks>The app does not restart. Models are available in views exclusively.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode.AppData">
+            <summary>
+            Generate models in AppData.
+            When: generation is triggered.
+            </summary>
+            <remarks>Generation can be triggered from the dashboard. The app does not restart.
+            Models are not compiled and thus are not available to the project.</remarks>
+        </member>
+        <member name="F:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode.LiveAppData">
+            <summary>
+            Generate models in AppData.
+            When: a content type change occurs, or generation is triggered.
+            </summary>
+            <remarks>Generation can be triggered from the dashboard. The app does not restart.
+            Models are not compiled and thus are not available to the project.</remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsModeExtensions">
+            <summary>
+            Provides extensions for the <see cref="T:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode"/> enumeration.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsModeExtensions.IsLive(Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode)">
+            <summary>
+            Gets a value indicating whether the mode is LiveAnything or PureLive.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsModeExtensions.IsLiveNotPure(Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode)">
+            <summary>
+            Gets a value indicating whether the mode is LiveAnything but not PureLive.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.Configuration.ModelsModeExtensions.SupportsExplicitGeneration(Umbraco.ModelsBuilder.Embedded.Configuration.ModelsMode)">
+            <summary>
+            Gets a value indicating whether the mode supports explicit generation (as opposed to pure live).
+            </summary>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.ImplementPropertyTypeAttribute">
+            <summary>
+            Indicates that a property implements a given property alias.
+            </summary>
+            <remarks>And therefore it should not be generated.</remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.ModelsBuilderAssemblyAttribute">
+            <summary>
+            Indicates that an Assembly is a Models Builder assembly.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.ModelsBuilderAssemblyAttribute.PureLive">
+            <summary>
+            Gets or sets a value indicating whether the assembly is a PureLive assembly.
+            </summary>
+            <remarks>A Models Builder assembly can be either PureLive or normal Dll.</remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.ModelsBuilderAssemblyAttribute.SourceHash">
+            <summary>
+            Gets or sets a hash value representing the state of the custom source code files
+            and the Umbraco content types that were used to generate and compile the assembly.
+            </summary>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.ReferencedAssemblies.Locations">
+            <summary>
+            Gets the assembly locations of all the referenced assemblies, that
+            are not dynamic, and have a non-null nor empty location.
+            </summary>
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.TypeExtensions.CreateGenericInstance(System.Type,System.Object,System.Object[])">
+            <summary>
+            Creates a generic instance of a generic type with the proper actual type of an object.
+            </summary>
+            <param name="genericType">A generic type such as <c>Something{}</c></param>
+            <param name="typeParmObj">An object whose type is used as generic type param.</param>
+            <param name="ctorArgs">Arguments for the constructor.</param>
+            <returns>A generic instance of the generic type with the proper type.</returns>
+            <remarks>Usage... typeof (Something{}).CreateGenericInstance(object1, object2, object3) will return
+            a Something{Type1} if object1.GetType() is Type1.</remarks>
+        </member>
+        <member name="T:Umbraco.ModelsBuilder.Embedded.PublishedModelUtility">
+            <summary>
+            This is called from within the generated model classes
+            </summary>
+            <remarks>
+            DO NOT REMOVE - although there are not code references this is used directly by the generated models.
+            </remarks>
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.PureLiveModelFactory.SyncRoot">
+            <inheritdoc />
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.PureLiveModelFactory.Refresh">
+            <inheritdoc />
+        </member>
+        <member name="P:Umbraco.ModelsBuilder.Embedded.PureLiveModelFactory.Enabled">
+            <inheritdoc />
+        </member>
+        <member name="M:Umbraco.ModelsBuilder.Embedded.PureLiveModelFactory.Reset">
+            <inheritdoc />
+        </member>
+        <member name="T:Umbraco.Web.PublishedElementExtensions">
+            <summary>
+            Provides extension methods to models.
+            </summary>
+        </member>
+        <member name="M:Umbraco.Web.PublishedElementExtensions.ValueFor``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.String,Umbraco.Core.Models.PublishedContent.Fallback,``1)">
+            <summary>
+            Gets the value of a property.
+            </summary>
+        </member>
+    </members>
+</doc>
