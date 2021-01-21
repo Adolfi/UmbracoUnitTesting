@@ -1,7 +1,9 @@
 # Umbraco Unit Testing
 All example tests from the official Umbraco Documentation section on Unit Testing: https://our.umbraco.com/documentation/Implementation/Unit-Testing/
+These examples are for Umbraco 8+ and they rely on [NUnit](https://nunit.org/) and [Moq](https://github.com/moq/moq4).
 
 ## Tests included:
+- [Mocking Umbraco](UmbracoUnitTesting.Tests/Shared/UmbracoBaseTest.cs)
 - [Testing a ContentModel](UmbracoUnitTesting.Tests/ContentModel/ContentModelTests.cs)
 - [Testing a RenderMvcController](UmbracoUnitTesting.Tests/RenderMvcController/RenderMvcControllerTests.cs)
 - [Testing a SurfaceController](UmbracoUnitTesting.Tests/SurfaceController/SurfaceControllerTests.cs)
