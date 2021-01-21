@@ -17,17 +17,11 @@ Every class in this solution has a summary with a link to the official documenta
 ## How to use this project:
 This solution contains two projects: A **.Core** project and a **.Tests** project. You'll notice that this solution does not contain any Umbraco website.
 This is intentional. Do not use this solution as a template or a base project. Use it as a reference and a source for inspiration to your own projects.
-All necessary assemblies to run each test have been installed such as:
-
-**UmbracoUnitTesting.Tests**
+Only the necessary assemblies to run each test have been installed such as:
 - UmbracoCms.Core
 - UmbracoCms.Web
 - NUnit
 - Moq
-
-**UmbracoUnitTesting.Core**
-- UmbracoCms.Core
-- UmbracoCms.Web
 
 ## Read more
 Go to [adolfi.dev](https://adolfi.dev) if you want to read more Umbraco and Unit Testing articles.
