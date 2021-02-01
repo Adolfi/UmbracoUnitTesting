@@ -1,4 +1,5 @@
-﻿using Umbraco.Core.Models.PublishedContent;
+﻿using System.Collections.Generic;
+using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web.Models;
 
 namespace UmbracoUnitTesting.Core.Features.Member {
@@ -11,5 +12,6 @@ namespace UmbracoUnitTesting.Core.Features.Member {
         public MemberProfileViewModel(IPublishedContent content) : base(content) { }
         public IPublishedContent Member { get; set; }
         public IPublishedContent OtherContent { get; set; }
+        public IEnumerable<IPublishedContent> ContentAtRoot { get; set; }
     }
 }

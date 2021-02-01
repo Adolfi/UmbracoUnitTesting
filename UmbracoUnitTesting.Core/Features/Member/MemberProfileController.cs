@@ -21,7 +21,8 @@ namespace UmbracoUnitTesting.Core.Features.Member {
             var viewModel = new MemberProfileViewModel(model.Content)
             {
                 Member = this.Umbraco.MembershipHelper.GetCurrentMember(), // TODO: Since writing this the UmbracoHelper.MembershipHelper is now obsolete and should instead inject MembershipHelper in the constructor. Keep this until documentation has been updated.
-                OtherContent = this.Umbraco.Content(1062)
+                OtherContent = this.Umbraco.Content(1062),
+                ContentAtRoot = this.Umbraco.ContentAtRoot()
             };
             return View(viewModel);
         }
