@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Configuration;
@@ -21,6 +22,16 @@ namespace UmbracoUnitTesting.Core.Features.Products {
         public IEnumerable<string> GetAllProducts()
         {
             return new[] { "Table", "Chair", "Desk", "Computer", "Beer fridge" };
+        }
+
+        [HttpGet]
+        public JsonResult GetAllProductsJson()
+        {
+            return new JsonResult
+            {
+                Data = this.GetAllProducts(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            };
         }
     }
 }

@@ -32,5 +32,19 @@ namespace UmbracoUnitTesting.Tests.ContentModel {
 
             Assert.AreEqual(expected, model.Heading);
         }
+
+        [Test]
+        [TestCase("/", "/")]
+        [TestCase("/umbraco", "/umbraco")]
+        [TestCase("https://www.umbraco.com", "https://www.umbraco.com")]
+        public void GivenPublishedContent_WhenGetUrl_ThenReturnCustomViewModelWithUrl(string url, string expected)
+        {
+            var content = new Mock<IPublishedContent>();
+            content.Setup(x => x.Url).Returns(url);
+
+            var model = new StandardPageViewModel(content.Object);
+
+            Assert.AreEqual(expected, model.Url);
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace UmbracoUnitTesting.Core.Features.StandardPage {
         public StandardPageViewModel(IPublishedContent content) : base(content){}
 
         public string Heading => this.Content.Value<string>(nameof(Heading));
+        public string Url => this.Content.Url;
     }
 }

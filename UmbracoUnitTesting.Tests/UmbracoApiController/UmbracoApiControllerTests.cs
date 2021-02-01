@@ -1,4 +1,6 @@
-﻿using Moq;
+﻿using System.Web.Mvc;
+using Moq;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
@@ -34,6 +36,14 @@ namespace UmbracoUnitTesting.Tests.UmbracoApiController {
             var result = this.controller.GetAllProducts();
 
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void WhenGetAllProducts_ThenReturnViewModelWithExpectedJson()
+        {
+            var json = JsonConvert.SerializeObject(((JsonResult)this.controller.GetAllProductsJson()).Data);
+
+            Assert.AreEqual("[\"Table\",\"Chair\",\"Desk\",\"Computer\",\"Beer fridge\"]", json);
         }
     }
 }
