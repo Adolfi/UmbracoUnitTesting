@@ -44,5 +44,20 @@ namespace UmbracoUnitTesting.Tests.RenderMvcController {
 
             Assert.AreEqual("Hello World", result.Heading);
         }
+
+        [Test]
+        [TestCase("/")]
+        [TestCase("https://www.umbraco.com")]
+        public void GivenContentModelWithUrl_WhenIndex_ThenReturnViewModelWithUrl(string url)
+        {
+            var content = new Mock<IPublishedContent>();
+            content.Setup(x => x.Url).Returns(url);
+
+            var model = new Umbraco.Web.Models.ContentModel(content.Object);
+            
+            var result = (HomeViewModel)((ViewResult)this.controller.Index(model)).Model;
+
+            Assert.AreEqual(url, result.Url);
+        }
     }
 }

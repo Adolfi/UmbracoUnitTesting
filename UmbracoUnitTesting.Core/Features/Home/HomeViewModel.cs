@@ -12,5 +12,6 @@ namespace UmbracoUnitTesting.Core.Features.Home {
 
         public string Heading { get; set; }
         public string DictionaryTitle { get; set; }
+        public string Url { get; set; }
     }
 }

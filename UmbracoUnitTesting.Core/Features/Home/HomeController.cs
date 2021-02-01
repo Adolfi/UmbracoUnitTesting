@@ -22,7 +22,8 @@ namespace UmbracoUnitTesting.Core.Features.Home {
             var viewModel = new HomeViewModel(model.Content)
             {
                 Heading = "Hello World",
-                DictionaryTitle = this.Umbraco.GetDictionaryValue("myDictionaryKey")
+                DictionaryTitle = this.Umbraco.GetDictionaryValue("myDictionaryKey"),
+                Url = model.Content.Url
             };
 
             return View(viewModel);
