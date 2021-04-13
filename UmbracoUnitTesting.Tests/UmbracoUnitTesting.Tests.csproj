@@ -264,6 +264,7 @@
     <Compile Include="MembershipHelper\MembershipHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderMvcController\RenderMvcControllerTests.cs" />
+    <Compile Include="Routing\ProductPageUrlSegmentProviderTests.cs" />
     <Compile Include="Shared\UmbracoBaseTest.cs" />
     <Compile Include="SurfaceController\SurfaceControllerTests.cs" />
     <Compile Include="UmbracoApiController\UmbracoApiControllerTests.cs" />

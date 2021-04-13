@@ -251,7 +251,9 @@
     <Compile Include="Features\Home\HomeViewModel.cs" />
     <Compile Include="Features\Member\MemberProfileController.cs" />
     <Compile Include="Features\Member\MemberProfileViewModel.cs" />
+    <Compile Include="Features\Products\ProductPageUrlSegmentProvider.cs" />
     <Compile Include="Features\Products\ProductsController.cs" />
+    <Compile Include="Features\Products\RegisterCustomSegmentProviderComposer.cs" />
     <Compile Include="Features\StandardPage\StandardPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
